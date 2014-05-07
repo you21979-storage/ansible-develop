@@ -57,7 +57,7 @@
       command: ./config --prefix=/usr/local no-shared chdir={{tmpdir}}/{{openssl}}
     - name: make
       command: make -j 1 chdir={{tmpdir}}/{{openssl}}
-   - name: install
+ 　  - name: install
       command: make install chdir={{tmpdir}}/{{openssl}}
 
     - name: download
