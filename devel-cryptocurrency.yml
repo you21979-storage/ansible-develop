@@ -25,6 +25,7 @@
       - git
       - gcc
       - gcc-c++
+      - python-devel
 
     - name: temp directory create
       file: dest={{tmpdir}} state=directory
@@ -91,5 +92,5 @@
     - name: bootstrap
       command: ./bootstrap.sh chdir={{tmpdir}}/{{boost}}
     - name: install
-      command: ./b2 install -j{{ansible_processor_vcpus}} link=static address-model=64 install chdir={{tmpdir}}/{{boost}}
+      command: ./b2 --prefix={{installdir}} -j{{ansible_processor_vcpus}} link=static address-model=64 install chdir={{tmpdir}}/{{boost}}
 
