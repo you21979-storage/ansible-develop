@@ -3,19 +3,20 @@
   user: root
 
   vars:
-    boost : boost_1_55_0
-    zlib : zlib-1.2.8
-    bzip2 : bzip2-1.0.6
-    openssl : openssl-1.0.1g
-    bdb : db-4.8.30
-    miniupnpc : miniupnpc-1.9.20140401
-    url_boost : http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.gz?r=&ts=1399443444&use_mirror=jaist
-    url_bzip2 : http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
-    url_zlib : http://zlib.net/zlib-1.2.8.tar.gz
-    url_openssl : http://www.openssl.org/source/openssl-1.0.1g.tar.gz
-    url_bdb : http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
-    url_miniupnpc : http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.9.20140401.tar.gz
-    tmpdir : /tmp/develop
+    boost: boost_1_55_0
+    zlib: zlib-1.2.8
+    bzip2: bzip2-1.0.6
+    openssl: openssl-1.0.1g
+    bdb: db-4.8.30
+    miniupnpc: miniupnpc-1.9.20140401
+    url_boost: http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.gz?r=&ts=1399443444&use_mirror=jaist
+    url_bzip2: http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+    url_zlib: http://zlib.net/zlib-1.2.8.tar.gz
+    url_openssl: http://www.openssl.org/source/openssl-1.0.1g.tar.gz
+    url_bdb: http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
+    url_miniupnpc: http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.9.20140401.tar.gz
+    tmpdir: /tmp/develop
+    installdir: /usr/local
 
   tasks:
     - name: yum install
@@ -33,7 +34,7 @@
     - name: extract
       command: tar zxvf {{tmpdir}}/{{zlib}}.tar.gz chdir={{tmpdir}}
     - name: make
-      command: ./configure --prefix=/usr/local --static chdir={{tmpdir}}/{{zlib}}
+      command: ./configure --prefix={{installdir}} --static chdir={{tmpdir}}/{{zlib}}
     - name: make
       command: make chdir={{tmpdir}}/{{zlib}}
     - name: install
@@ -54,10 +55,10 @@
     - name: extract
       command: tar zxvf {{openssl}}.tar.gz chdir={{tmpdir}}
     - name: make
-      command: ./config --prefix=/usr/local no-shared chdir={{tmpdir}}/{{openssl}}
+      command: ./config --prefix={{installdir}} no-shared chdir={{tmpdir}}/{{openssl}}
     - name: make
       command: make -j 1 chdir={{tmpdir}}/{{openssl}}
- 　  - name: install
+    - name: install
       command: make install chdir={{tmpdir}}/{{openssl}}
 
     - name: download
@@ -65,7 +66,7 @@
     - name: extract
       command: tar zxvf {{bdb}}.tar.gz chdir={{tmpdir}}
     - name: make
-      command: ../dist/configure --prefix=/usr/local --disable-shared --enable-static --enable-cxx chdir={{tmpdir}}/{{bdb}}/build_unix
+      command: ../dist/configure --prefix={{installdir}} --disable-shared --enable-static --enable-cxx chdir={{tmpdir}}/{{bdb}}/build_unix
     - name: make
       command: make -j {{ansible_processor_vcpus}} chdir={{tmpdir}}/{{bdb}}/build_unix
     - name: install
@@ -78,9 +79,9 @@
     - name: make
       command: make -j {{ansible_processor_vcpus}} chdir={{tmpdir}}/{{miniupnpc}}
     - name: install
-      shell: INSTALLPREFIX=/usr/local make install chdir={{tmpdir}}/{{miniupnpc}}
+      shell: INSTALLPREFIX={{installdir}} make install chdir={{tmpdir}}/{{miniupnpc}}
     - name: postprocess
-      shell: rm /usr/local/lib/libminiupnpc.so*
+      shell: rm {{installdir}}/lib/libminiupnpc.so*
 
 
     - name: download
