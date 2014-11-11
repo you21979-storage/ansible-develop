@@ -6,7 +6,7 @@
     boost: boost_1_55_0
     zlib: zlib-1.2.8
     bzip2: bzip2-1.0.6
-    openssl: openssl-1.0.1g
+    openssl: openssl-1.0.1j
     bdb: db-4.8.30
     miniupnpc: miniupnpc-1.9.20140401
     url_boost: http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.gz?r=&ts=1399443444&use_mirror=jaist
