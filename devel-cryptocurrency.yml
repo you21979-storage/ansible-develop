@@ -12,7 +12,7 @@
     url_boost: http://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.gz?r=&ts=1399443444&use_mirror=jaist
     url_bzip2: http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
     url_zlib: http://zlib.net/zlib-1.2.8.tar.gz
-    url_openssl: http://www.openssl.org/source/openssl-1.0.1g.tar.gz
+    url_openssl: http://www.openssl.org/source/openssl-1.0.1j.tar.gz
     url_bdb: http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
     url_miniupnpc: http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.9.20140401.tar.gz
     tmpdir: /tmp/develop
